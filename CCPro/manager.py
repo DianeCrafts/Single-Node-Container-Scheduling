@@ -7,31 +7,31 @@ import string
 
 
 task = []
-
+password = 'xxxx'
 
 def firstCon( i , data ):
     out = get_random_string(5 , data[0])
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp ' +data[1] +' container1:/'))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp ' +data[1] +' container1:/'))
     time.sleep(0.5)
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  container1 sh -c "python3 python.py '+ data[0] + ' ' + data[1] + ' '+ out + '"'))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  container1 sh -c "python3 python.py '+ data[0] + ' ' + data[1] + ' '+ out + '"'))
     time.sleep(0.5)
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp container1:/' +out +' ' +data[2]))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp container1:/' +out +' ' +data[2]))
     containers[i] = 1
 
 
 def secondCon( i, data):
     out = get_random_string(5, data[0])
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp ' +data[1] +' container2:/'))
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  container2 sh -c "python3 python.py '+ data[0] + ' ' + data[1] + ' '+ out + '"'))
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp container2:/' +out +' ' +data[2]))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp ' +data[1] +' container2:/'))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  container2 sh -c "python3 python.py '+ data[0] + ' ' + data[1] + ' '+ out + '"'))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp container2:/' +out +' ' +data[2]))
     containers[i] = 1
 
 
 def thirdCon( i, data):
     out = get_random_string(5, data[0])
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp ' +data[1] +' container3:/'))
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  container3 sh -c "python3 python.py '+ data[0] + ' ' + data[1] + ' '+ out + '"'))
-    p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp container3:/' +out +' ' +data[2]))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp ' +data[1] +' container3:/'))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  container3 sh -c "python3 python.py '+ data[0] + ' ' + data[1] + ' '+ out + '"'))
+    p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp container3:/' +out +' ' +data[2]))
     containers[i] = 1
 
 
