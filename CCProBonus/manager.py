@@ -8,41 +8,41 @@ import string
 
 task = []
 container = 1
-
+password = 'xxx'
 def conRunner(data ):
     global container
     out = get_random_string(5,'.txt')
 
     if(data[0].endswith('.py')):
         p = os.system('pipreqs ' + data[1])
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp '+ data[1] + data[0] +' bonus1:/'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp '+ data[1] + data[0] +' bonus1:/'))
         p = os.system('pipreqs ' + data[1])
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp requirements.txt bonus1:/'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp requirements.txt bonus1:/'))
         time.sleep(0.3)
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "pip install -r requirements.txt"'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "pip install -r requirements.txt"'))
         time.sleep(0.3)
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "python3 '+data[0]+' >>'+data[0]+out+'"'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "python3 '+data[0]+' >>'+data[0]+out+'"'))
         time.sleep(0.3)
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp bonus1:/'+data[0]+out+ ' ' + data[2]))
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "rm '+data[0]+' "'))
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "rm requirements.txt"'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp bonus1:/'+data[0]+out+ ' ' + data[2]))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "rm '+data[0]+' "'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "rm requirements.txt"'))
         time.sleep(0.3)
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "rm '+data[0]+out+'"'))
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo rm requirements.txt'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "rm '+data[0]+out+'"'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo rm requirements.txt'))
        
     if(data[0].endswith('.cpp')):
         program = get_random_string(5 ,'.out')
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp '+ data[1] + data[0] +' bonus1:/'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp '+ data[1] + data[0] +' bonus1:/'))
         time.sleep(0.3)
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "g++ -o '+  program +' '+data[0]+'"'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "g++ -o '+  program +' '+data[0]+'"'))
         time.sleep(0.3)
         p = os.system('sudo docker exec  bonus1 sh -c "./'+  program +'>>'+data[0]+out +'"')
         time.sleep(0.3)
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker cp bonus1:/'+data[0]+out+ ' ' + data[2]))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker cp bonus1:/'+data[0]+out+ ' ' + data[2]))
         time.sleep(0.3)
-        p=os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "rm '+data[0]+'"'))
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "rm '+program+'"'))
-        p = os.system('echo %s|sudo -S %s' % ('m2380223802', 'sudo docker exec  bonus1 sh -c "rm '+data[0]+out+'"'))
+        p=os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "rm '+data[0]+'"'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "rm '+program+'"'))
+        p = os.system('echo %s|sudo -S %s' % (password, 'sudo docker exec  bonus1 sh -c "rm '+data[0]+out+'"'))
 
     container = 1
 
